@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark_background">#0A1D1B</color>
+    <color name="text_white">#FFFFFF</color>
+    <color name="button_green">#4CAF50</color>
+    <color name="input_background">#2D2D2D</color>
+    <color name="hint_text">#B3B3B3</color>
+    <color name="divider">#424242</color>
+    <color name="forgot_password">#E87A7A</color>
+    <color name="account_link">#64B5F6</color>
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="gray">#757575</color>
+    <color name="light_gray">#CCCCCC</color>
+    <color name="white_background">#FFFFFF</color>
+</resources>

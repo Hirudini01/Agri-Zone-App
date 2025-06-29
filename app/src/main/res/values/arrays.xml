@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="problem_categories">
+        <item>🦠 Disease/Pest Problem</item>
+        <item>🌱 Growth Issues</item>
+        <item>🍂 Leaf Problems</item>
+        <item>🌾 Crop Yield Issues</item>
+        <item>💧 Irrigation Problems</item>
+        <item>🌡️ Weather Related</item>
+        <item>🧪 Soil Issues</item>
+        <item>❓ Other</item>
+    </string-array>
+
+    <string-array name="disease_filter_options">
+        <item>All Diseases</item>
+        <item>Rice Blast</item>
+        <item>Leaf Spot</item>
+        <item>Bacterial Blight</item>
+        <item>Brown Plant Hopper</item>
+        <item>Stem Borer</item>
+        <item>Other</item>
+    </string-array>
+</resources>
+

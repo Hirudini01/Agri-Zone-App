@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomNavigation"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Farming Calendar"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#F6FAF9"
+                android:gravity="center"
+                android:paddingBottom="16dp"/>
+
+            <!-- Month Selector -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <ImageButton
+                    android:id="@+id/btnPrevMonth"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_arrow_left"
+                    android:background="?attr/selectableItemBackgroundBorderless"/>
+
+                <TextView
+                    android:id="@+id/tvCurrentMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="June 2023"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#F6FAF9"
+                    android:layout_marginHorizontal="16dp"/>
+
+                <ImageButton
+                    android:id="@+id/btnNextMonth"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_arrow_right"
+                    android:background="?attr/selectableItemBackgroundBorderless"/>
+            </LinearLayout>
+
+            <!-- Days of Week -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="7"
+                android:background="#3C907B"
+                android:paddingVertical="8dp"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Sun"
+                    android:gravity="center"
+                    android:textColor="#F6FAF9"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Mon"
+                    android:gravity="center"
+                    android:textColor="#F6FAF9"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Tue"
+                    android:gravity="center"
+                    android:textColor="#F6FAF9"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Wed"
+                    android:gravity="center"
+                    android:textColor="#F6FAF9"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Thu"
+                    android:gravity="center"
+                    android:textColor="#F6FAF9"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Fri"
+                    android:gravity="center"
+                    android:textColor="#F6FAF9"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Sat"
+                    android:gravity="center"
+                    android:textColor="#F6FAF9"
+                    android:textStyle="bold"/>
+            </GridLayout>
+
+            <!-- Calendar Grid -->
+            <GridView
+                android:id="@+id/calendarGrid"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:numColumns="7"
+                android:verticalSpacing="4dp"
+                android:horizontalSpacing="4dp"
+                android:stretchMode="columnWidth"
+                android:gravity="center"
+                android:background="#E8F5E9"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Weather Tips Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/crd_bckground"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="🌦️ Weather-Based Tips"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#0A1D1B"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Perfect week for planting rice! Ideal temperature and rainfall expected."
+                    android:textSize="14sp"
+                    android:textColor="#0A1D1B"/>
+            </LinearLayout>
+
+            <!-- Suggested Activities -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Suggested Activities"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#D8DCDC"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/crd_bckground"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_plant"
+                        android:layout_marginEnd="8dp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Plant rice seeds"
+                        android:textSize="16sp"
+                        android:textColor="#0A1D1B"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_water"
+                        android:layout_marginEnd="8dp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Check irrigation systems"
+                        android:textSize="16sp"
+                        android:textColor="#0A1D1B"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_fertilizer"
+                        android:layout_marginEnd="8dp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Apply organic fertilizer"
+                        android:textSize="16sp"
+                        android:textColor="#0A1D1B"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Today's Tasks -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Today's Tasks"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#0A1D1B"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:id="@+id/btnAddTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add New Task"
+                android:backgroundTint="#329288"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:id="@+id/tasksContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/crd_bckground"
+                android:padding="16dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:elevation="16dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home_selected"
+            android:contentDescription="Home"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/nav_training"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_training"
+            android:contentDescription="Training"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/nav_market"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_market"
+            android:contentDescription="Market"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/nav_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_profile"
+            android:contentDescription="Profile"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+</RelativeLayout>
