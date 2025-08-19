@@ -16,6 +16,11 @@ A comprehensive Android application designed to assist farmers with agricultural
 - **📊 Sensor Dashboard** - Real-time monitoring of environmental sensors
 - **🛒 Marketplace** - Buy and sell agricultural products and services
 - **📚 Training Modules** - Educational content and skill development
+- **Real-time Sensor Monitoring**: Monitor temperature, humidity, pressure, and light levels
+- **User Profile Management**: Comprehensive user profile with personal information
+- **Sensor Data Visualization**: Visual cards displaying current environmental conditions
+- **Simulated Data Mode**: Fallback to simulated sensor data when hardware sensors are unavailable
+- **Professional UI/UX**: Modern card-based design with intuitive navigation
 
 ### 🚧 Coming Soon
 - **📈 Smart Data System** - Data analytics and insights for farming decisions
@@ -222,6 +227,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Agricultural experts for domain knowledge
 - Open source contributors
 
----
-
-**Made with ❤️ for the farming community** 
