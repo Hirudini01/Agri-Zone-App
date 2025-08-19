@@ -38,6 +38,14 @@
             android:alpha="0.9" />
     </LinearLayout>
 
+    <!-- Divider for professional look -->
+    <View
+        android:layout_width="70dp"
+        android:layout_height="2dp"
+        android:background="@color/button_green"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp"/>
+
     <!-- Content with padding -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,9 +57,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            android:layout_marginBottom="28dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="6dp">
 
             <Button
                 android:id="@+id/btnUploadVideo"

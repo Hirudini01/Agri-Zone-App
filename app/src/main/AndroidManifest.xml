@@ -90,5 +90,17 @@
             android:name=".SensorActivity"
             android:exported="false"
             android:theme="@style/Theme.AgriZone" />
+        <activity
+            android:name=".SmartDataActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AgriZone" />
+        <activity
+            android:name=".CommunityActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AgriZone" />
+        <activity
+            android:name=".profileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AgriZone" />
     </application>
 </manifest>

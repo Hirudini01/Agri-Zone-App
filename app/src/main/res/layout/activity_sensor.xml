@@ -35,6 +35,14 @@
             android:alpha="0.9" />
     </LinearLayout>
 
+    <!-- Divider for professional look -->
+    <View
+        android:layout_width="70dp"
+        android:layout_height="2dp"
+        android:background="@color/button_green"
+        android:layout_below="@id/header"
+        android:layout_centerHorizontal="true"/>
+
     <!-- Main Content -->
     <ScrollView
         android:layout_width="match_parent"
@@ -52,9 +60,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
+                android:layout_marginBottom="28dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
                 app:cardBackgroundColor="@android:color/white">
 
                 <LinearLayout
@@ -88,9 +96,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
+                android:layout_marginBottom="28dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
                 app:cardBackgroundColor="@android:color/white">
 
                 <LinearLayout
@@ -182,9 +190,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
+                android:layout_marginBottom="28dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
                 app:cardBackgroundColor="@android:color/white">
 
                 <LinearLayout
@@ -272,13 +280,201 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Pressure Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📊"
+                            android:textSize="32sp"
+                            android:layout_marginEnd="16dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pressure"
+                                android:textColor="@color/gray"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvPressure"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1013 hPa"
+                                android:textColor="@color/dark_background"
+                                android:textSize="32sp"
+                                android:textStyle="bold"
+                                android:fontFamily="sans-serif-medium" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="NORMAL"
+                                android:textColor="@android:color/holo_orange_dark"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:background="@drawable/status_background"
+                                android:backgroundTint="@android:color/holo_orange_dark"
+                                android:textColorHint="@android:color/white"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Pressure Progress Bar -->
+                    <ProgressBar
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:progress="50"
+                        android:progressTint="@android:color/holo_orange_dark"
+                        android:progressBackgroundTint="@color/light_gray"
+                        style="?android:attr/progressBarStyleHorizontal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Range: 980 - 1050 hPa"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Light Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💡"
+                            android:textSize="32sp"
+                            android:layout_marginEnd="16dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Light"
+                                android:textColor="@color/gray"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvLight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="320 lx"
+                                android:textColor="@color/dark_background"
+                                android:textSize="32sp"
+                                android:textStyle="bold"
+                                android:fontFamily="sans-serif-medium" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="BRIGHT"
+                                android:textColor="@android:color/holo_orange_light"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:background="@drawable/status_background"
+                                android:backgroundTint="@android:color/holo_orange_light"
+                                android:textColorHint="@android:color/white"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Light Progress Bar -->
+                    <ProgressBar
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:progress="70"
+                        android:progressTint="@android:color/holo_orange_light"
+                        android:progressBackgroundTint="@color/light_gray"
+                        style="?android:attr/progressBarStyleHorizontal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Range: 0 - 1000 lx"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <!-- Real-time Data Notice -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
+                android:layout_marginBottom="28dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
                 app:cardBackgroundColor="@android:color/white">
 
                 <LinearLayout

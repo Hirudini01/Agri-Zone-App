@@ -19,7 +19,7 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
 
     private SensorManager sensorManager;
     private Sensor tempSensor, humiditySensor, pressureSensor, lightSensor;
-    private TextView tvTemperature, tvHumidity, tvSensorStatus;
+    private TextView tvTemperature, tvHumidity, tvPressure, tvLight, tvSensorStatus;
     private Button btnRefreshSensors;
 
     // Store latest sensor values
@@ -42,6 +42,8 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
     private void initializeViews() {
         tvTemperature = findViewById(R.id.tvTemperature);
         tvHumidity = findViewById(R.id.tvHumidity);
+        tvPressure = findViewById(R.id.tvPressure);
+        tvLight = findViewById(R.id.tvLight);
         tvSensorStatus = findViewById(R.id.tvSensorStatus);
         btnRefreshSensors = findViewById(R.id.btnRefreshSensors);
     }
@@ -125,9 +127,13 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
         // Generate realistic sensor data for demonstration
         double temperature = 25.0 + (Math.random() * 10.0); // 25-35°C
         int humidity = 50 + (int)(Math.random() * 30); // 50-80%
+        double pressure = 980.0 + (Math.random() * 70.0); // 980-1050 hPa
+        int light = (int)(Math.random() * 1000); // 0-1000 lx
 
         tvTemperature.setText(String.format("%.1f°C (Simulated)", temperature));
         tvHumidity.setText(humidity + "% (Simulated)");
+        tvPressure.setText(String.format("%.0f hPa (Simulated)", pressure));
+        tvLight.setText(light + " lx (Simulated)");
     }
 
     @Override
@@ -177,12 +183,12 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
 
             case Sensor.TYPE_PRESSURE:
                 latestPressure = event.values[0];
-                // Pressure can be displayed in additional card if layout supports it
+                tvPressure.setText(String.format("%.0f hPa", latestPressure));
                 break;
 
             case Sensor.TYPE_LIGHT:
                 latestLight = event.values[0];
-                // Light can be displayed in additional card if layout supports it
+                tvLight.setText(String.format("%.0f lx", latestLight));
                 break;
         }
     }

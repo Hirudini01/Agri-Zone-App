@@ -335,3 +335,5 @@ public class ExpertSupportActivity extends AppCompatActivity {
         }
     }
 }
+
+// All UI logic matches the professional layout.

@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="4dp"
-    app:cardBackgroundColor="@android:color/white">
+    android:layout_margin="12dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="@color/white_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="20dp"
         android:gravity="center_vertical">
+
+        <!-- Task type icon -->
+        <ImageView
+            android:id="@+id/ivTaskType"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_task"
+            android:tint="@color/button_green"
+            android:layout_marginEnd="14dp"
+            android:contentDescription="Task Type" />
 
         <CheckBox
             android:id="@+id/cbTask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="#4CAF50"
-            android:layout_marginEnd="12dp"/>
+            android:buttonTint="@color/button_green"
+            android:layout_marginEnd="14dp"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -32,25 +43,28 @@
                 android:id="@+id/tvTaskTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#333333"
+                android:textSize="19sp"
+                android:textColor="@color/dark_background"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"/>
+                android:fontFamily="sans-serif-medium"
+                android:paddingBottom="2dp"/>
 
             <TextView
                 android:id="@+id/tvTaskDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="#666666"
+                android:textSize="15sp"
+                android:textColor="@color/gray"
                 android:layout_marginTop="4dp"
-                android:fontFamily="sans-serif"/>
+                android:fontFamily="sans-serif"
+                android:paddingBottom="2dp"/>
         </LinearLayout>
 
         <View
             android:layout_width="4dp"
-            android:layout_height="40dp"
-            android:background="#4CAF50"
-            android:layout_marginStart="12dp"/>
+            android:layout_height="44dp"
+            android:background="@color/button_green"
+            android:layout_marginStart="14dp"
+            android:alpha="0.7"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

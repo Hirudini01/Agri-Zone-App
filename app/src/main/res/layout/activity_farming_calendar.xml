@@ -28,6 +28,14 @@
                 android:gravity="center"
                 android:paddingBottom="16dp"/>
 
+            <!-- Divider for professional look -->
+            <View
+                android:layout_width="60dp"
+                android:layout_height="2dp"
+                android:background="@color/button_green"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"/>
+
             <!-- Month Selector -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -148,30 +156,37 @@
                 android:layout_marginBottom="16dp"/>
 
             <!-- Weather Tips Card -->
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/crd_bckground"
-                android:padding="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white_background"
                 android:layout_marginBottom="16dp">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="🌦️ Weather-Based Tips"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="#0A1D1B"
-                    android:layout_marginBottom="8dp"/>
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Perfect week for planting rice! Ideal temperature and rainfall expected."
-                    android:textSize="14sp"
-                    android:textColor="#0A1D1B"/>
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="🌦️ Weather-Based Tips"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#0A1D1B"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Perfect week for planting rice! Ideal temperature and rainfall expected."
+                        android:textSize="14sp"
+                        android:textColor="#0A1D1B"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <!-- Suggested Activities -->
             <TextView
@@ -183,76 +198,83 @@
                 android:textColor="#D8DCDC"
                 android:layout_marginBottom="8dp"/>
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/crd_bckground"
-                android:padding="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white_background"
                 android:layout_marginBottom="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_plant"
-                        android:layout_marginEnd="8dp"/>
-
-                    <TextView
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Plant rice seeds"
-                        android:textSize="16sp"
-                        android:textColor="#0A1D1B"/>
-                </LinearLayout>
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_plant"
+                            android:layout_marginEnd="8dp"/>
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_water"
-                        android:layout_marginEnd="8dp"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Plant rice seeds"
+                            android:textSize="16sp"
+                            android:textColor="#0A1D1B"/>
+                    </LinearLayout>
 
-                    <TextView
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Check irrigation systems"
-                        android:textSize="16sp"
-                        android:textColor="#0A1D1B"/>
-                </LinearLayout>
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_water"
+                            android:layout_marginEnd="8dp"/>
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_fertilizer"
-                        android:layout_marginEnd="8dp"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Check irrigation systems"
+                            android:textSize="16sp"
+                            android:textColor="#0A1D1B"/>
+                    </LinearLayout>
 
-                    <TextView
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Apply organic fertilizer"
-                        android:textSize="16sp"
-                        android:textColor="#0A1D1B"/>
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_fertilizer"
+                            android:layout_marginEnd="8dp"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Apply organic fertilizer"
+                            android:textSize="16sp"
+                            android:textColor="#0A1D1B"/>
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <!-- Today's Tasks -->
             <TextView
@@ -273,13 +295,20 @@
                 android:textColor="#FFFFFF"
                 android:layout_marginBottom="16dp"/>
 
-            <LinearLayout
-                android:id="@+id/tasksContainer"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/crd_bckground"
-                android:padding="16dp"/>
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white_background">
+
+                <LinearLayout
+                    android:id="@+id/tasksContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"/>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 

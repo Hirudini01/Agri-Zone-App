@@ -1,5 +1,7 @@
 package com.s23010372.agrizone;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -8,11 +10,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
@@ -46,6 +51,7 @@ public class DiseaseMapActivity extends AppCompatActivity implements OnMapReadyC
     private ImageView btnSearchAction;
     private final String API_KEY = "AIzaSyBE17D9KvLvxfSf1G1ivwbGffn1XIXl8qY";
     private final String CITY = "Colombo";
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,14 +141,121 @@ public class DiseaseMapActivity extends AppCompatActivity implements OnMapReadyC
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
+    @Override
+    public void onMapReady(GoogleMap map) {
+        try {
+            googleMap = map;
+
+            // Set map properties for full screen experience
+            googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            googleMap.getUiSettings().setZoomControlsEnabled(false); // Disable default zoom controls
+            googleMap.getUiSettings().setCompassEnabled(true);
+            googleMap.getUiSettings().setMapToolbarEnabled(false); // Disable default toolbar
+            googleMap.getUiSettings().setMyLocationButtonEnabled(false); // Use custom FAB instead
+            googleMap.getUiSettings().setRotateGesturesEnabled(true);
+            googleMap.getUiSettings().setTiltGesturesEnabled(true);
+            googleMap.getUiSettings().setScrollGesturesEnabled(true);
+            googleMap.getUiSettings().setZoomGesturesEnabled(true);
+
+            // Request location permission if not granted
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                googleMap.setMyLocationEnabled(true);
+
+                // Do NOT lock camera to user location on every location change
+                // Remove googleMap.setOnMyLocationChangeListener
+                // User can drag and move map freely
+            } else {
+                ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    LOCATION_PERMISSION_REQUEST_CODE);
+                // Default location if permission not granted
+                LatLng colombo = new LatLng(6.9271, 79.8612);
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(colombo, 12));
+                showInfoPanel("🌾 Disease Tracking Map", "Showing default location (Colombo). Enable location for more features.");
+            }
+
+            // Add initial markers
+            addAllDiseaseMarkers();
+
+            // Show initial info panel
+            showInfoPanel("🌾 Disease Tracking Map", "Tap on markers to view detailed information about disease outbreaks");
+
+            // Set marker click listener
+            googleMap.setOnMarkerClickListener(marker -> {
+                // Professional info panel with emoji and color
+                String title = marker.getTitle();
+                String snippet = marker.getSnippet();
+                if (title.contains("Banana")) {
+                    showInfoPanel("🍌 " + title, snippet);
+                } else if (title.contains("Rice")) {
+                    showInfoPanel("🌾 " + title, snippet);
+                } else if (title.contains("Coconut")) {
+                    showInfoPanel("🥥 " + title, snippet);
+                } else {
+                    showInfoPanel("🦠 " + title, snippet);
+                }
+                return true;
+            });
+
+            // Toggle search/filter bar visibility on map click, keep Disease Tracker text visible
+            googleMap.setOnMapClickListener(latLng -> {
+                // Hide info panel
+                if (infoPanel != null) {
+                    infoPanel.setVisibility(View.GONE);
+                }
+                // Toggle search and filter bar only
+                LinearLayout headerLayout = findViewById(R.id.headerLayout);
+                if (headerLayout != null) {
+                    // Get MaterialCardView containers for search and filter bars
+                    View searchBarCard = headerLayout.findViewById(R.id.etSearchLocation).getParent() instanceof View
+                        ? (View) headerLayout.findViewById(R.id.etSearchLocation).getParent() : null;
+                    View filterBarCard = headerLayout.findViewById(R.id.spinnerFilter).getParent() instanceof View
+                        ? (View) headerLayout.findViewById(R.id.spinnerFilter).getParent() : null;
+                    if (searchBarCard != null && filterBarCard != null) {
+                        boolean currentlyVisible = searchBarCard.getVisibility() == View.VISIBLE;
+                        int newVisibility = currentlyVisible ? View.GONE : View.VISIBLE;
+                        searchBarCard.setVisibility(newVisibility);
+                        filterBarCard.setVisibility(newVisibility);
+                    }
+                }
+            });
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Error loading map: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+            showInfoPanel("⚠️ Map Loading Error", "Please check your internet connection and ensure you have a valid Google Maps API key configured.");
+        }
+    }
+
     private void setupFloatingActionButtons() {
         // My Location FAB
         if (fabMyLocation != null) {
             fabMyLocation.setOnClickListener(v -> {
                 if (googleMap != null) {
-                    LatLng colombo = new LatLng(6.9271, 79.8612);
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(colombo, 12));
-                    Toast.makeText(this, "📍 Moving to your location", Toast.LENGTH_SHORT).show();
+                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                        ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        googleMap.setMyLocationEnabled(true);
+                        if (googleMap.getMyLocation() != null) {
+                            LatLng userLatLng = new LatLng(
+                                googleMap.getMyLocation().getLatitude(),
+                                googleMap.getMyLocation().getLongitude()
+                            );
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15));
+                            showInfoPanel("📍 Your Location", "You are here. Explore disease outbreaks nearby.");
+                            Toast.makeText(this, "📍 Showing your live location", Toast.LENGTH_SHORT).show();
+                        } else {
+                            LatLng colombo = new LatLng(6.9271, 79.8612);
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(colombo, 12));
+                            showInfoPanel("🌾 Disease Tracking Map", "Live location not available, showing default.");
+                            Toast.makeText(this, "📍 Live location not available, showing default", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        LatLng colombo = new LatLng(6.9271, 79.8612);
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(colombo, 12));
+                        showInfoPanel("🌾 Disease Tracking Map", "Permission not granted, showing default location.");
+                        Toast.makeText(this, "📍 Permission not granted, showing default location", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
@@ -239,6 +352,7 @@ public class DiseaseMapActivity extends AppCompatActivity implements OnMapReadyC
             infoPanel.setVisibility(View.VISIBLE);
             tvInfoTitle.setText(title);
             tvInfoDetails.setText(details);
+            // Optionally, set background color or icon based on disease type for professional look
         }
     }
 
@@ -323,7 +437,7 @@ public class DiseaseMapActivity extends AppCompatActivity implements OnMapReadyC
                 return;
             }
 
-            // Hide keyboard
+            // Hide keyboard and clear focus
             etSearchLocation.clearFocus();
 
             // Perform location search
@@ -429,11 +543,13 @@ public class DiseaseMapActivity extends AppCompatActivity implements OnMapReadyC
             // Animate camera to search result
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(searchResult, 12));
 
+            // Remove previous search marker if needed (optional)
             // Add a temporary marker for the searched location
             googleMap.addMarker(new MarkerOptions()
                 .position(searchResult)
                 .title("📍 " + resultName)
-                .snippet("Search Result"));
+                .snippet("Search Result"))
+                .showInfoWindow();
 
             // Show info panel with search result
             showInfoPanel("🔍 Search Result", "Found: " + resultName + "\nLat: " +
@@ -444,50 +560,19 @@ public class DiseaseMapActivity extends AppCompatActivity implements OnMapReadyC
         }
     }
 
+
     @Override
-    public void onMapReady(GoogleMap map) {
-        try {
-            googleMap = map;
-            
-            // Set map properties for full screen experience
-            googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-            googleMap.getUiSettings().setZoomControlsEnabled(false); // Disable default zoom controls
-            googleMap.getUiSettings().setCompassEnabled(true);
-            googleMap.getUiSettings().setMapToolbarEnabled(false); // Disable default toolbar
-            googleMap.getUiSettings().setMyLocationButtonEnabled(false); // Use custom FAB instead
-            googleMap.getUiSettings().setRotateGesturesEnabled(true);
-            googleMap.getUiSettings().setTiltGesturesEnabled(true);
-            googleMap.getUiSettings().setScrollGesturesEnabled(true);
-            googleMap.getUiSettings().setZoomGesturesEnabled(true);
-
-            // Set initial camera position
-            LatLng colombo = new LatLng(6.9271, 79.8612);
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(colombo, 7));
-            
-            // Add initial markers
-            addAllDiseaseMarkers();
-            
-            // Show initial info panel
-            showInfoPanel("🌾 Disease Tracking Map", "Tap on markers to view detailed information about disease outbreaks");
-            
-            // Set marker click listener
-            googleMap.setOnMarkerClickListener(marker -> {
-                showInfoPanel(marker.getTitle(), marker.getSnippet());
-                return true;
-            });
-
-            // Hide info panel when map is clicked
-            googleMap.setOnMapClickListener(latLng -> {
-                if (infoPanel != null) {
-                    infoPanel.setVisibility(View.GONE);
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (googleMap != null) {
+                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                        ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        googleMap.setMyLocationEnabled(true);
+                    }
                 }
-            });
-
-        } catch (Exception e) {
-            Toast.makeText(this, "Error loading map: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-            // Show a fallback message if map fails to load
-            showInfoPanel("⚠️ Map Loading Error", "Please check your internet connection and ensure you have a valid Google Maps API key configured.");
+            }
         }
     }
 

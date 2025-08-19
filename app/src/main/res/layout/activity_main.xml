@@ -6,70 +6,89 @@
     android:background="#0A1D1B"
     android:padding="24dp">
 
-    <!-- Agri Zone Logo -->
-
-    <!-- Agri Zone Title -->
-
-    <!-- Smart Farming Solutions Subtitle -->
-
-    <!-- Get Started Button -->
-
-    <!-- Powered By Footer -->
-
-    <ImageView
-        android:id="@+id/logo"
+    <!-- Logo in Card for elevation -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/logoCard"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="32dp"
-        android:contentDescription="Agri Zone Logo"
-        android:src="@drawable/agri_zone_logo"
-        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/dark_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:contentDescription="Agri Zone Logo"
+            android:src="@drawable/agri_zone_logo" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="24dp"
         android:text="Agri Zone"
         android:textColor="@color/text_white"
         android:textSize="36sp"
         android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo" />
+        app:layout_constraintTop_toBottomOf="@id/logoCard" />
+
+    <!-- Divider for professional look -->
+    <View
+        android:layout_width="60dp"
+        android:layout_height="2dp"
+        android:background="@color/button_green"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
 
     <TextView
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Smart Farming Solutions"
         android:textColor="@color/text_white"
         android:textSize="18sp"
+        android:alpha="0.9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title" />
 
-    <Button
-        android:id="@+id/btnGetStarted"
+    <!-- Get Started Button in Card -->
+    <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:backgroundTint="#EFEEEE"
-        android:paddingVertical="12dp"
-        android:text="Get Started"
-        android:textAllCaps="false"
-        android:textColor="#0A1D1B"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="6dp"
         app:layout_constraintTop_toBottomOf="@id/subtitle"
-        app:layout_constraintWidth_percent="0.6" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.7"
+        android:layout_marginTop="60dp">
+
+        <Button
+            android:id="@+id/btnGetStarted"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:backgroundTint="@color/text_white"
+            android:text="Get Started"
+            android:textAllCaps="false"
+            android:textColor="@color/dark_background"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/footer"

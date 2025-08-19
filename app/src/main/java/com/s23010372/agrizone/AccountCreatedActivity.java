@@ -16,6 +16,8 @@ public class AccountCreatedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_created);
 
+        // If your database helper is named DatabaseHelper, use that instead:
+        // dbHelper = new DatabaseHelper(this);
         dbHelper = new DatabaseActivity(this);
 
         // Get user data from intent
@@ -35,16 +37,18 @@ public class AccountCreatedActivity extends AppCompatActivity {
         }
 
         Button btnLogin = findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to LoginActivity and clear back stack
-                Intent intent = new Intent(AccountCreatedActivity.this, LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish();
-            }
-        });
+        if (btnLogin != null) {
+            btnLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Navigate to LoginActivity and clear back stack
+                    Intent intent = new Intent(AccountCreatedActivity.this, LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
     }
 
     @Override
