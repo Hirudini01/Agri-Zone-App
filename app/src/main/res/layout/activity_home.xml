@@ -77,67 +77,117 @@
                     android:alignmentMode="alignMargins"
                     android:columnCount="2"
                     android:columnOrderPreserved="false"
-                    android:padding="8dp">
+                    android:padding="@dimen/grid_padding"
+                    android:useDefaultMargins="false">
 
                     <!-- Expert Support Image -->
-                    <ImageView
-                        android:id="@+id/ivExpertSupport"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="240dp"
+                        android:layout_height="@dimen/feature_card_height"
                         android:layout_columnWeight="1"
-                        android:layout_margin="10dp"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/expert_card" />
+                        android:layout_margin="@dimen/feature_card_margin"
+                        app:cardCornerRadius="@dimen/feature_card_corner_radius"
+                        app:cardElevation="4dp">
+
+                        <ImageView
+                            android:id="@+id/ivExpertSupport"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/expert_card"
+                            android:contentDescription="Expert Support" />
+                    </androidx.cardview.widget.CardView>
 
                     <!-- Smart Data System Image -->
-                    <ImageView
-                        android:id="@+id/ivSmartDataSystem"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="240dp"
+                        android:layout_height="@dimen/feature_card_height"
                         android:layout_columnWeight="1"
-                        android:layout_margin="10dp"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/smart_card" />
+                        android:layout_margin="@dimen/feature_card_margin"
+                        app:cardCornerRadius="@dimen/feature_card_corner_radius"
+                        app:cardElevation="4dp">
+
+                        <ImageView
+                            android:id="@+id/ivSmartDataSystem"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/smart_card"
+                            android:contentDescription="Smart Data System" />
+                    </androidx.cardview.widget.CardView>
 
                     <!-- Disease Map Image -->
-                    <ImageView
-                        android:id="@+id/ivDiseaseMap"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="240dp"
+                        android:layout_height="@dimen/feature_card_height"
                         android:layout_columnWeight="1"
-                        android:layout_margin="10dp"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/map" />
+                        android:layout_margin="@dimen/feature_card_margin"
+                        app:cardCornerRadius="@dimen/feature_card_corner_radius"
+                        app:cardElevation="4dp">
+
+                        <ImageView
+                            android:id="@+id/ivDiseaseMap"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/map"
+                            android:contentDescription="Disease Map" />
+                    </androidx.cardview.widget.CardView>
 
                     <!-- Farming Calendar Image -->
-                    <ImageView
-                        android:id="@+id/ivFarmingCalendar"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="240dp"
+                        android:layout_height="@dimen/feature_card_height"
                         android:layout_columnWeight="1"
-                        android:layout_margin="10dp"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/farming" />
+                        android:layout_margin="@dimen/feature_card_margin"
+                        app:cardCornerRadius="@dimen/feature_card_corner_radius"
+                        app:cardElevation="4dp">
+
+                        <ImageView
+                            android:id="@+id/ivFarmingCalendar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/farming"
+                            android:contentDescription="Farming Calendar" />
+                    </androidx.cardview.widget.CardView>
 
                     <!-- Labor Management Image -->
-                    <ImageView
-                        android:id="@+id/ivLaborManagement"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="240dp"
+                        android:layout_height="@dimen/feature_card_height"
                         android:layout_columnWeight="1"
-                        android:layout_margin="10dp"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/labor" />
+                        android:layout_margin="@dimen/feature_card_margin"
+                        app:cardCornerRadius="@dimen/feature_card_corner_radius"
+                        app:cardElevation="4dp">
+
+                        <ImageView
+                            android:id="@+id/ivLaborManagement"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/labor"
+                            android:contentDescription="Labor Management" />
+                    </androidx.cardview.widget.CardView>
 
                     <!-- Community Image -->
-                    <ImageView
-                        android:id="@+id/ivCommunity"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="240dp"
+                        android:layout_height="@dimen/feature_card_height"
                         android:layout_columnWeight="1"
-                        android:layout_margin="10dp"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/community" />
+                        android:layout_margin="@dimen/feature_card_margin"
+                        app:cardCornerRadius="@dimen/feature_card_corner_radius"
+                        app:cardElevation="4dp">
+
+                        <ImageView
+                            android:id="@+id/ivCommunity"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/community"
+                            android:contentDescription="Community" />
+                    </androidx.cardview.widget.CardView>
+
                 </GridLayout>
             </LinearLayout>
         </LinearLayout>
@@ -147,7 +197,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="@dimen/bottom_nav_height"
         android:layout_alignParentBottom="true"
         app:cardElevation="12dp"
         app:cardCornerRadius="0dp">
@@ -170,8 +220,8 @@
 
                 <ImageView
                     android:id="@+id/nav_home"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/nav_icon_size"
+                    android:layout_height="@dimen/nav_icon_size"
                     android:src="@drawable/ic_home_selected"
                     android:tint="@color/button_green"
                     android:contentDescription="Home" />
@@ -195,8 +245,8 @@
 
                 <ImageView
                     android:id="@+id/ivTraining"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/nav_icon_size"
+                    android:layout_height="@dimen/nav_icon_size"
                     android:src="@drawable/ic_training"
                     android:tint="@color/gray"
                     android:contentDescription="Training" />
@@ -220,8 +270,8 @@
 
                 <ImageView
                     android:id="@+id/nav_market"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/nav_icon_size"
+                    android:layout_height="@dimen/nav_icon_size"
                     android:src="@drawable/ic_market"
                     android:tint="@color/gray"
                     android:contentDescription="Market" />
@@ -246,8 +296,8 @@
 
                 <ImageView
                     android:id="@+id/nav_profile"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/nav_icon_size"
+                    android:layout_height="@dimen/nav_icon_size"
                     android:src="@drawable/ic_profile"
                     android:tint="@color/gray"
                     android:contentDescription="Profile" />
@@ -270,7 +320,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/bottomNavigation"
-        android:layout_margin="24dp"
+        android:layout_margin="@dimen/fab_margin"
         android:src="@android:drawable/ic_menu_compass"
         android:contentDescription="Sensor Data"
         app:tint="@color/text_white"

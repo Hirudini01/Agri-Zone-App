@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image button dimensions - Base for all devices -->
+    <dimen name="feature_card_height">0dp</dimen>
+    <dimen name="feature_card_aspect_ratio">1.2</dimen>
+    <dimen name="feature_card_margin">2dp</dimen>
+    <dimen name="feature_card_corner_radius">8dp</dimen>
+    <dimen name="grid_padding">8dp</dimen>
+
+    <!-- Screen percentage based dimensions -->
+    <dimen name="card_min_height">100dp</dimen>
+    <dimen name="card_max_height">180dp</dimen>
+
+    <!-- Bottom navigation -->
+    <dimen name="bottom_nav_height">72dp</dimen>
+    <dimen name="nav_icon_size">24dp</dimen>
+    
+    <!-- FAB -->
+    <dimen name="fab_margin">16dp</dimen>
+</resources>
